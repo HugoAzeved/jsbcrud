@@ -61,6 +61,8 @@ public class Config {
      *
      * @return O texto de copyright com o ano substituído.
      */
+
+    private final int cookieHourslife = 48;
     public String getCopyright() {
         int currentYear = LocalDate.now().getYear();
         return currentYear > year
