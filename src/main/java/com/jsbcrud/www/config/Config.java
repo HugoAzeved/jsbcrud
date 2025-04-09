@@ -1,4 +1,4 @@
-package com.jsbcrud.www.model;
+package com.jsbcrud.www.config;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
