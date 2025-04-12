@@ -1,6 +1,7 @@
 package com.jsbcrud.www.config;
 
 import com.jsbcrud.www.model.Account;
+import com.jsbcrud.www.repository.AccountRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
