@@ -10,15 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Controlador responsável por lidar com as operações relacionadas à entidade "Thing".
+ * Controlador responsável por lidar com as operações relacionadas à entidade {@code Thing}.
  *
- * Mapeado sob o caminho base "/thing", este controller fornece endpoints para
- * visualização e criação de novos registros da entidade.
+ * <p>Este controller está mapeado sob o caminho base {@code /thing} e fornece endpoints
+ * para visualização e criação de novos registros da entidade {@code Thing}.
  *
- * Utiliza a configuração definida em {@link Config} para obter informações como o nome curto da aplicação.
+ * <p>Utiliza a configuração definida em {@link Config} para definir, por exemplo,
+ * títulos dinâmicos das páginas com base no nome curto da aplicação.
  *
- * Anotado com {@link Controller} para indicar que é um controlador Spring MVC e
- * {@link RequiredArgsConstructor} para injeção automática de dependências via construtor.
+ * <p>Anotado com {@link Controller} para indicar que é um componente Spring MVC e
+ * com {@link RequiredArgsConstructor} para permitir injeção automática de dependências
+ * através de construtor.
  *
  * @author SeuNome
  */
@@ -27,15 +29,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/thing")
 public class ThingController {
 
-    /** Instância de configuração compartilhada usada para definir títulos dinâmicos */
+    /**
+     * Instância de {@link Config} usada para obter configurações compartilhadas,
+     * como o nome curto da aplicação.
+     */
     private final Config config;
 
     /**
-     * Exibe os detalhes de uma entidade "Thing" com base no ID fornecido.
+     * Manipula requisições GET para visualizar os detalhes de uma entidade {@code Thing}
+     * com base no seu ID.
      *
-     * @param id    Identificador único da entidade "Thing" a ser visualizada.
-     * @param model Objeto {@link Model} usado para adicionar atributos à view.
-     * @return O nome da view que será renderizada (nesse caso, "thing/view").
+     * @param id    o identificador único da entidade {@code Thing} a ser visualizada
+     * @param model o modelo Spring MVC usado para adicionar atributos à view
+     * @return o nome da view a ser renderizada (neste caso, {@code thing/view})
      */
     @GetMapping("/view/{id}")
     public String viewThing(@PathVariable Long id, Model model) {
@@ -44,10 +50,10 @@ public class ThingController {
     }
 
     /**
-     * Exibe o formulário para criação de uma nova entidade "Thing".
+     * Manipula requisições GET para exibir o formulário de criação de uma nova entidade {@code Thing}.
      *
-     * @param model Objeto {@link Model} usado para adicionar atributos à view.
-     * @return O nome da view que será renderizada (nesse caso, "thing/new").
+     * @param model o modelo Spring MVC usado para adicionar atributos à view
+     * @return o nome da view a ser renderizada (neste caso, {@code thing/new})
      */
     @GetMapping("/new")
     public String newThing(Model model) {
