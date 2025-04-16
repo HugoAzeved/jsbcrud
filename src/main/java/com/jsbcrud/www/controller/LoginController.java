@@ -64,7 +64,6 @@ public class LoginController {
      *
      * @param email    o e-mail fornecido pelo usuário
      * @param password a senha fornecida pelo usuário (será criptografada)
-     * @param request  objeto da requisição HTTP (não utilizado diretamente aqui)
      * @param response objeto da resposta HTTP, usado para adicionar cookies
      * @param model    modelo utilizado para passar dados à view em caso de erro
      * @return redireciona para a página principal se o login for bem-sucedido;
@@ -74,11 +73,10 @@ public class LoginController {
     public String doLogin(
             @RequestParam String email,
             @RequestParam String password,
-            HttpServletRequest request,
             HttpServletResponse response,
             Model model
     ) {
-        Optional<Account> userOpt = accountRepository.findByEmail(email);
+        Optional<Account> userOpt = accountRepository.findByEmailAndStatus(email, Account.Status.ON);
 
         if (userOpt.isPresent()) {
             // Criptografa a senha informada para comparar com a armazenada

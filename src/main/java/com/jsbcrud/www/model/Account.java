@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 @Entity
 @Table(name = "account")
@@ -57,5 +58,32 @@ public class Account {
 
     public enum Status {
         ON, OFF
+    }
+
+    public String getFirstName() {
+        if (this.name == null || this.name.trim().isEmpty()) {
+            return "";
+        }
+        return this.name.split(" ")[0];
+    }
+
+    public int getAge() {
+        if (this.birth == null) {
+            return 0;
+        }
+        return Period.between(this.birth, LocalDate.now()).getYears();
+    }
+
+    public String getTextType() {
+        if (this.type == null) {
+            return "Função não definida";
+        }
+
+        return switch (this.type) {
+            case ADMIN -> "Administrador";
+            case OPERATOR -> "Operador";
+            case USER -> "Usuário regular";
+            default -> "Função desconhecida: " + this.type.name();
+        };
     }
 }
