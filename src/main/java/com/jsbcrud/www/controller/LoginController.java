@@ -2,8 +2,10 @@ package com.jsbcrud.www.controller;
 
 import com.jsbcrud.www.config.Config;
 import com.jsbcrud.www.model.Account;
+
 import com.jsbcrud.www.repository.AccountRepository;
 import com.jsbcrud.www.util.HashUtil;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,6 +73,7 @@ public class LoginController {
      * @return redireciona para a página principal se o login for bem-sucedido;
      *         caso contrário, retorna novamente para a view de login com mensagem de erro
      */
+
     @PostMapping("/login")
     public String doLogin(
             @RequestParam String email,
@@ -81,6 +85,7 @@ public class LoginController {
         Optional<Account> userOpt = accountRepository.findByEmail(email);
 
         if (userOpt.isPresent()) {
+
             // Criptografa a senha informada para comparar com a armazenada
             String hashedPassword = HashUtil.sha256(password);
 
@@ -90,11 +95,13 @@ public class LoginController {
                 loginCookie.setMaxAge(config.getCookieHoursLive() * 60 * 60); // Tempo de vida do cookie
                 loginCookie.setHttpOnly(true); // Impede acesso ao cookie via JavaScript
                 loginCookie.setPath("/");      // Disponível em toda a aplicação
+
                 response.addCookie(loginCookie);
 
                 return "redirect:/";
             }
         }
+
 
         // Se chegou aqui, o login falhou
         model.addAttribute("title", config.getShortName() + " - Faça login");
@@ -117,4 +124,5 @@ public class LoginController {
         response.addCookie(loginCookie);
         return "redirect:/login";
     }
+
 }

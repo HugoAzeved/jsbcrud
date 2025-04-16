@@ -2,11 +2,15 @@ package com.jsbcrud.www.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+
 @Table(name = "account")
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -59,3 +63,4 @@ public class Account {
         ON, OFF
     }
 }
+

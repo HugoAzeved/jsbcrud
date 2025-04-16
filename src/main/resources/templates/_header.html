@@ -10,7 +10,9 @@
 <div id="wrap">
 
     <header>
-        <a href="/">${logo}</a>
+
+        <a href="/"><img id="logo" src="${logo}"></a>
+
         <h1>${sitename}</h1>
     </header>
     <hr>
@@ -25,8 +27,9 @@
         <span>Olá ${loggedUser.name}!
             <a href="/logout" onclick="return confirm('Tem certeza que deseja sair do aplicativo?')">Sair</a>
         </span>
-    </#if>
     </nav>
+    </#if>
+
     <hr>
 </#if>
 

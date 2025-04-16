@@ -2,6 +2,7 @@ package com.jsbcrud.www.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Set;
 
 @Entity

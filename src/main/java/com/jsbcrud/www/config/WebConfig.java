@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
 /**
  * Classe de configuração responsável por registrar interceptadores (interceptors)
  * no ciclo de vida das requisições da aplicação Spring MVC.
@@ -19,9 +20,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * @author SeuNome
  */
+
 @Configuration
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
+
 
     /**
      * Interceptor responsável por verificar se o usuário está autenticado
@@ -46,3 +49,13 @@ public class WebConfig implements WebMvcConfigurer {
                 );
     }
 }
+
+    private final AuthInterceptor authInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor)
+                .excludePathPatterns("/login", "/css/**", "/js/**", "/img/**");
+    }
+}
+

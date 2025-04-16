@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 /**
  * Controlador responsável por lidar com as operações relacionadas à entidade "Categoria".
  *
@@ -21,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author SeuNome
  */
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/cat")
 public class CategoryController {
+
 
     /**
      * Instância de {@link Config}, usada para acessar configurações da aplicação,
@@ -41,11 +44,15 @@ public class CategoryController {
      * @param model o modelo Spring usado para passar dados para a view
      * @return o nome da view {@code cat/list}, onde as categorias serão exibidas
      */
+
+
+
     @GetMapping("/list")
     public String listCat(Model model) {
         model.addAttribute("title", config.getShortName() + " - Categorias");
         return "cat/list";
     }
+
 
     /**
      * Manipula requisições GET para exibir o formulário de criação de uma nova categoria.
@@ -56,9 +63,12 @@ public class CategoryController {
      * @param model o modelo Spring usado para passar dados para a view
      * @return o nome da view {@code cat/new}, onde será exibido o formulário
      */
+
     @GetMapping("/new")
     public String newCat(Model model) {
         model.addAttribute("title", config.getShortName() + " - Nova Categoria");
         return "cat/new";
     }
+
 }
+
