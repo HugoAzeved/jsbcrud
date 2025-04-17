@@ -1,0 +1,3 @@
+2025-04-16 21:36:17.972065-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION CHARACTER VARYING(255)": "U&'Meu nome \\00e9 Yoshikage Kira. Tenho 33 anos. Minha casa fica na parte nordes... (1013)"; SQL statement:
+update category set description=?,metadata=?,name=?,status=? where id=? [22001-232]

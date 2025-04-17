@@ -64,3 +64,6 @@ html, body {
 #wrap>nav { display:flex; align-items: center; flex-wrap: wrap; }
 #wrap>nav>a { padding: 0 .25rem; }
 #wrap>nav span:last-child { margin-left: auto; }
+
+.success { color: green; }
+.error { color: red; }

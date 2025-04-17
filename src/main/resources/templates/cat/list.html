@@ -1,5 +1,42 @@
 <#include "../_header.html">
 
-<h2>Lista de Category</h2>
+<h2>Lista de Categorias</h2>
+
+<#if error??>
+<p class="error" id="message1">${error}</p>
+<script>
+    const closeMessage = setTimeout(() => {
+        document.getElementById('message1').style.display='none';
+    }, 5000);
+</script>
+</#if>
+<#if success??>
+<p class="success" id="message2">${success}</p>
+<script>
+    const closeMessage = setTimeout(() => {
+        document.getElementById('message2').style.display='none';
+    }, 5000);
+</script>
+</#if>
+
+<#if loggedUser?? && loggedUser.type == "ADMIN">
+<p><a href="/cat/new">Nova Categoria</a></p>
+</#if>
+
+<#if categories?has_content>
+<ul>
+    <#list categories as cat>
+    <li>
+        <strong>${cat.name}</strong> - ${cat.description}
+        <#if loggedUser?? && loggedUser.type == "ADMIN">
+        | <a href="/cat/edit/${cat.id}">Editar</a>
+        | <a href="/cat/delete/${cat.id}" onclick="return confirm('Tem certeza que deseja apagar esta categoria?')">Apagar</a>
+    </#if>
+    </li>
+</#list>
+</ul>
+<#else>
+<p>Não há categorias ativas.</p>
+</#if>
 
 <#include "../_footer.html">
