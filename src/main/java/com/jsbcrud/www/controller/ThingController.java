@@ -31,6 +31,12 @@ public class ThingController {
 
     @GetMapping("/view/{id}")
     public String viewThing(@PathVariable Long id, Model model, HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            model.addAttribute("loggedUser", session.getAttribute("user"));
+        }
+
         // Buscar o Thing pelo ID e garantir que o status é ON
         Optional<Thing> thingOpt = thingRepository.findById(id);
         if (thingOpt.isEmpty() || thingOpt.get().getStatus() != Thing.Status.ON) {
@@ -38,11 +44,6 @@ public class ThingController {
         }
 
         Thing thing = thingOpt.get();
-
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("user") != null) {
-            model.addAttribute("loggedUser", session.getAttribute("user"));
-        }
 
         model.addAttribute("thing", thing);
         model.addAttribute("owner", thing.getAccount()); // Passa o 'Account' relacionado

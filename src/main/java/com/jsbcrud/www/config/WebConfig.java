@@ -42,7 +42,8 @@ public class WebConfig implements WebMvcConfigurer {
                         "/login",       // Permite acesso sem login à página de login
                         "/css/**",      // Libera arquivos de estilo (CSS)
                         "/js/**",       // Libera scripts JavaScript
-                        "/img/**"       // Libera imagens públicas
+                        "/img/**",       // Libera imagens públicas
+                        "/api/account/login"
                 );
     }
 }

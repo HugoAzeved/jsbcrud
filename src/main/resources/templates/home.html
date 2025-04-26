@@ -1,6 +1,7 @@
 <#include "_header.html">
 
-<h2>Olá!</h2>
+<h2>Itens Disponíveis</h2>
+
 <#if error??>
 <p class="error" id="message1">${error}</p>
 <script>
@@ -13,6 +14,15 @@
 <script>
     setTimeout(() => document.getElementById('message2').style.display = 'none', 5000);
 </script>
+</#if>
+
+<small>Clique no item para ver detalhes.</small>
+<#if things?has_content>
+<#list things as thing>
+<p><a href="/thing/view/${thing.id}">${thing.name}</a></p>
+</#list>
+<#else>
+<p>Nenhum item disponível.</p>
 </#if>
 
 <#include "_footer.html">

@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface ThingRepository extends JpaRepository<Thing, Long> {
     List<Thing> findByStatusOrderByDateDesc(Thing.Status status);
+
     Optional<Thing> findByIdAndStatus(Integer id, Thing.Status status);
 }

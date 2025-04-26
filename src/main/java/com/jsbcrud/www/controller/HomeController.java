@@ -21,7 +21,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-
         List<Thing> things = thingRepository.findByStatusOrderByDateDesc(Thing.Status.ON);
         model.addAttribute("title", config.getShortName());
         model.addAttribute("things", things);
